@@ -1,0 +1,881 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    /* colors */
+    
+
+    /* Whitespace */
+    --global-baseline: 0.5rem;
+    --global-whitespace-xxs: var(--global-baseline); /* 8 */
+    --global-whitespace-xs: calc(var(--global-baseline) * 2); /* 16 */
+    --global-whitespace-sm: calc(var(--global-baseline) * 3); /* 24 */
+    --global-whitespace-md: calc(var(--global-baseline) * 4); /* 32 */
+    --global-whitespace-lg: calc(var(--global-baseline) * 5); /* 40 */
+    --global-whitespace-xl: calc(var(--global-baseline) * 6); /* 48 */
+
+    /* transitions */
+    --global-transition-alpha: .2s;
+    --global-transition-beta: 1s;
+
+    --global-font-size: 16;
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: calc(var(--global-font-size) / 16 * 100%); /* 16 px */
+    line-height: 1.5rem;
+    font-family: "Open Sans", Helvetica, arial, sans-serif;
+    color: var(--global-color-neutral-xx-light);
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background: url("/img/game_logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+}
+
+body {
+    background-color: rgba(0,0,0,0.8);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+::-moz-selection {
+    background: var(--global-color-beta);
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: var(--global-color-beta);
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-style: var(--global-font-space);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: calc(29rem / var(--global-font-size));
+    line-height: calc(43.5rem / var(--global-font-size));
+    margin: 0 0 24px;
+}
+
+h2 {
+    font-size: calc(23rem / var(--global-font-size));
+    line-height: calc(34.5rem / var(--global-font-size));
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: calc(20rem / var(--global-font-size));
+    line-height: calc(30rem / var(--global-font-size));
+    font-weight: 400;
+    margin: 0 0 24px;
+}
+
+h4 {
+    font-size: calc(18rem / var(--global-font-size));
+    line-height: calc(27rem / var(--global-font-size));
+}
+
+h4,
+h5,
+h6 {
+    font-size: calc(16rem / var(--global-font-size));
+    font-weight: 600;
+    line-height: calc(24rem / var(--global-font-size));
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: calc(23rem / var(--global-font-size));
+    line-height: calc(32rem / var(--global-font-size));
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: calc(12rem / var(--global-font-size));
+    line-height: calc(16rem / var(--global-font-size));
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    transition: all var(--global-transition-alpha);
+    color: var(--global-color-alpha);
+    outline-color: var(--global-color-alpha);
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+    color: var(--global-color-alpha);
+}
+
+a:hover,
+a:focus {
+    color: var(--global-color-alpha-light);
+}
+
+label,
+input {
+    display: block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--global-color-neutral-light);
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+    position: relative;
+    padding: 24px 24px 0;
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 79.5em; /* 79.5 * 16px = 1272 */
+    width: 100%;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+.c-app {
+    padding-top: var(--global-whitespace-md);
+
+    max-width: calc(var(--global-baseline) * 100);
+    margin-left: auto;
+    margin-right: auto;
+
+    min-height: 100vh;
+}
+
+.c-button {
+    width: 100%;
+    height: 40px;
+    margin-bottom: var(--global-whitespace-xs);
+}
+
+.c-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: var(--global-whitespace-xs);
+}
+
+.c-card {
+    background-color: white;
+    width: 100%;
+    border-radius: 8px;
+    padding: var(--global-baseline);
+}
+
+@media (min-width: 392px) {
+    .c-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 576px) {
+    .c-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .c-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+.u-color-neutral {
+    color: var(--global-color-neutral);
+}
+
+.u-color-neutral-dark {
+    color: var(--global-color-neutral-dark);
+}
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+    padding-top: 0 !important;
+}
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+    margin-bottom: 4px !important;
+}
+
+.u-mb-sm {
+    margin-bottom: 8px !important;
+}
+
+.u-mb-md {
+    margin-bottom: 16px !important;
+}
+
+.u-mb-lg {
+    margin-bottom: 32px !important;
+}
+
+.u-mb-xl {
+    margin-bottom: 48px !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-xs {
+    max-width: 27em !important;
+}
+
+.u-max-width-sm {
+    max-width: 39em !important;
+}
+
+.u-max-width-md {
+    max-width: 50em !important;
+}
+
+.u-max-width-lg {
+    max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+
+/*
+    Utilities: align
+    ---
+    Utility classes align text or components
+*/
+
+.u-align-text-center {
+    text-align: center;
+}
+
+.u-align-center {
+    margin: 0 auto;
+}
+
+/*
+    Utilities: text
+    Utility classes to create smaller or bigger test
+*/
+
+.u-text-sm {
+    font-size: calc(14rem / var(--global-font-size));
+    line-height: calc(21rem / var(--global-font-size));
+}
+
+/*
+    Utility: Flex
+    ---
+    Utility classes to put specific flex properties onto elements
+    Will be mostly used on o-layout__item/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.o-layout__item {
+    width: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+    padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+    margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+    padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+    margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+    padding: 0 24px;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+    justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+    justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+    justify-content: center;
+}
+
+.o-layout--justify-space-around {
+    justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+    justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-stretch{
+    align-items: stretch;
+}
+
+.o-layout--align-start {
+    align-items: flex-start;
+}
+
+.o-layout--align-end {
+    align-items: flex-end;
+}
+
+.o-layout--align-center {
+    align-items: center;
+}
+
+.o-layout--align-baseline {
+    align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+    align-content: start;
+}
+
+.o-layout--align-content-end {
+    align-content: end;
+}
+
+.o-layout--align-content-center {
+    align-content: center;
+}
+
+.o-layout--align-content-space-around {
+    align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+    align-content: space-between;
+}
+*/
+
+.u-flex-basis-auto {
+    flex-basis: auto !important;
+}
+
+.u-flex-grow-1 {
+    flex-grow: 1 !important;
+}
+
+.u-1-of-2 {
+    flex-basis: calc(100% / 2) !important;
+}
+
+.u-1-of-3 {
+    flex-basis: calc(100% / 3) !important;
+}
+
+.u-2-of-3 {
+    flex-basis: calc(100% / 3 * 2) !important;
+}
+
+.u-1-of-4 {
+    flex-basis: calc(100% / 4) !important;
+}
+
+.u-3-of-4 {
+    flex-basis: calc(100% / 4 * 3) !important;
+}
+
+.u-1-of-5 {
+    flex-basis: calc(100% / 5) !important;
+}
+
+.u-2-of-5 {
+    flex-basis: calc(100% / 5 * 2) !important;
+}
+
+.u-3-of-5 {
+    flex-basis: calc(100% / 5 * 3) !important;
+}
+
+.u-4-of-5 {
+    flex-basis: calc(100% / 5 * 4) !important;
+}
+
+.u-1-of-6 {
+    flex-basis: calc(100% / 6) !important;
+}
+
+.u-5-of-6 {
+    flex-basis: calc(100% / 6 * 5) !important;
+}
+
+@media (min-width: 576px) {
+    .u-1-of-2-bp1 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp1 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp1 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp1 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp1 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp1 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp1 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp1 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .u-1-of-2-bp2 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp2 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp2 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp2 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp2 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp2 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp2 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp2 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .u-1-of-2-bp3 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp3 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp3 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp3 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp3 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp3 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp3 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp3 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .u-1-of-2-bp4 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp4 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp4 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp4 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp4 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp4 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp4 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp4 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Media Queries
+    ---
+    EXAMPLE Media Queries for Responsive Design.
+    These examples override the primary ('mobile first') styles.
+    USE THEM INLINE!
+*/
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in mobile first design
+*/
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+*/
+
+/* Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+*/
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+@media (min-width: 992px) {}
+*/
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
