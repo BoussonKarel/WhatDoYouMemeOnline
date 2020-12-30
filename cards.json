@@ -1,0 +1,22 @@
+[
+    {
+        "text": "Dit is een tekstje",
+        "hot": false
+    },
+    {
+        "text": "Dit is een getint tekstje",
+        "hot": true
+    },
+    {
+        "text": "Dit is een ander tekstje",
+        "hot": false
+    },
+    {
+        "text": "Dit is een ander getint tekstje",
+        "hot": true
+    },
+    {
+        "text": "Amaaai zo cool",
+        "hot": false
+    }
+]

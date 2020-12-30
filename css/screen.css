@@ -308,6 +308,12 @@ input::placeholder {
 #COMPONENTS
 \*------------------------------------*/
 
+/*
+    Component: App
+    ---
+    
+*/
+
 .c-app {
     padding-top: var(--global-whitespace-md);
 
@@ -318,11 +324,40 @@ input::placeholder {
     min-height: 100vh;
 }
 
+/*
+    Component: Header
+    ---
+    Game header with username and score
+*/
+
+.c-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.c-header__name,
+.c-header__score {
+    font-size: 1.5rem;
+    line-height: 3rem;
+    padding: 0 var(--global-whitespace-xs);
+    margin-bottom: var(--global-baseline);
+    border-radius: var(--global-baseline);
+    background-color: lightgray;
+}
+
 .c-button {
+    cursor: pointer;
     width: 100%;
     height: 40px;
     margin-bottom: var(--global-whitespace-xs);
 }
+
+/*
+    Component: Cards
+    ---
+    Game cards
+*/
 
 .c-cards {
     display: grid;
@@ -331,10 +366,19 @@ input::placeholder {
 }
 
 .c-card {
+    cursor: pointer;
     background-color: white;
     width: 100%;
-    border-radius: 8px;
-    padding: var(--global-baseline);
+    border-radius: var(--global-baseline);
+    padding: var(--global-whitespace-sm) var(--global-whitespace-xxs);
+}
+
+.c-card--picking {
+    background-color: lightblue;
+}
+
+.c-card--picked {
+    background-color: lightskyblue;
 }
 
 @media (min-width: 392px) {
@@ -355,6 +399,51 @@ input::placeholder {
     }
 }
 
+/*
+    Component: Timer
+    ---
+    Timer in corner of screen for during rounds
+*/
+
+.c-timer {
+    display: none;
+
+    position: fixed;
+    bottom: var(--global-whitespace-xxs);
+    right: var(--global-whitespace-xxs);
+    display: none;
+
+    background-color: white;
+
+    font-size: 1.5rem;
+    line-height: 3rem;
+    padding: 0 var(--global-whitespace-xs);
+    border-radius: var(--global-baseline);
+    background-color: lightgray;
+}
+
+/*
+    Component: Username picker
+    ---
+    Pop up to let a user pick a username
+*/
+
+.c-namepicker {
+    display: none;
+    background-color: white;
+    position: fixed;
+    padding: var(--global-whitespace-sm);
+    top: var(--global-whitespace-sm);
+    bottom: var(--global-whitespace-sm);
+    left: var(--global-whitespace-sm);
+    right: var(--global-whitespace-sm);
+}
+
+.c-namepicker__form {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /*------------------------------------*\
 #UTILITIES
