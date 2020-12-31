@@ -52,10 +52,6 @@ html {
     background-attachment: fixed;
 }
 
-body {
-    background-color: rgba(0,0,0,0.8);
-}
-
 *,
 *:before,
 *:after {
@@ -315,8 +311,6 @@ input::placeholder {
 */
 
 .c-app {
-    padding-top: var(--global-whitespace-md);
-
     max-width: calc(var(--global-baseline) * 100);
     margin-left: auto;
     margin-right: auto;
@@ -324,53 +318,75 @@ input::placeholder {
     min-height: 100vh;
 }
 
-/*
-    Component: Header
-    ---
-    Game header with username and score
-*/
-
-.c-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.c-header__name,
-.c-header__score {
-    font-size: 1.5rem;
-    line-height: 3rem;
-    padding: 0 var(--global-whitespace-xs);
-    margin-bottom: var(--global-baseline);
-    border-radius: var(--global-baseline);
-    background-color: lightgray;
+.c-host, .c-playerinfo, .c-round {
+    margin-top: var(--global-whitespace-xs);
 }
 
 .c-button {
     cursor: pointer;
-    width: 100%;
     height: 40px;
     margin-bottom: var(--global-whitespace-xs);
 }
 
-/*
-    Component: Cards
-    ---
-    Game cards
-*/
+.c-host {
+    display: none;
+}
 
-.c-cards {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: var(--global-whitespace-xs);
+.c-playerinfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-playerinfo__item,
+.c-card {
+    background-color: white;
+    padding: var(--global-whitespace-sm) var(--global-whitespace-xxs);
+    border: 1px solid rgb(200,200,200);
+    border-radius: var(--global-baseline);
+    padding: 10px 6px;
+    line-height: 20px;
+}
+
+.c-round, .c-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.c-image,
+.c-cards,
+.c-card {
+    flex-basis: 100%;
+}
+
+@media (min-width: 392px) {
+    .c-image {
+        flex-basis: calc(100% / 3 * 2);;
+    }
+
+    .c-card {
+        flex-basis: calc(50% - var(--global-baseline));
+    }
+}
+
+@media (min-width: 576px) {
+    .c-image {
+        flex-basis: 50%;
+    }
+
+    .c-cards {
+        flex-basis: 50%;
+    }
+}
+
+.c-image img {
+    width: 100%;
 }
 
 .c-card {
     cursor: pointer;
-    background-color: white;
     width: 100%;
-    border-radius: var(--global-baseline);
-    padding: var(--global-whitespace-sm) var(--global-whitespace-xxs);
+    margin-bottom: var(--global-baseline);
 }
 
 .c-card--picking {
@@ -379,24 +395,6 @@ input::placeholder {
 
 .c-card--picked {
     background-color: lightskyblue;
-}
-
-@media (min-width: 392px) {
-    .c-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 576px) {
-    .c-cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 768px) {
-    .c-cards {
-        grid-template-columns: repeat(4, 1fr);
-    }
 }
 
 /*
@@ -429,14 +427,7 @@ input::placeholder {
 */
 
 .c-namepicker {
-    display: none;
-    background-color: white;
-    position: fixed;
     padding: var(--global-whitespace-sm);
-    top: var(--global-whitespace-sm);
-    bottom: var(--global-whitespace-sm);
-    left: var(--global-whitespace-sm);
-    right: var(--global-whitespace-sm);
 }
 
 .c-namepicker__form {

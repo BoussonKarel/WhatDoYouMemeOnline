@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>What do you meme?</title>
+        <meta name="description" content="Fun party game for friends.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+
+        <script src="./js/dataHander.js"></script>
+        <script src="./js/app.js"></script>
+    </head>
+    <body>
+        <div class="c-app">
+            <div class="c-host js-host-controls">
+                <div class="c-host__section">
+                    <button class="c-button c-host__action js-loadplayers">Load players</button>
+                    <span class="js-players"></span>
+                </div>
+                <div class="c-host__section">
+                    <button class="c-button c-host__action js-startround">Start round</button>
+                    <button class="c-button c-host__action js-startvoting">Start voting</button>
+                </div>
+            </div>
+            <div class="c-playerinfo">
+                <span class="c-playerinfo__item">Username</span>
+                <span class="c-playerinfo__item">x punten</span>
+            </div>
+            <div class="c-round">
+                <figure class="c-image js-image-container">
+                    <img src="img/images/mockingspongebob.jpg" alt="Mocking Spongebob">
+                </figure>
+                <div class="c-cards js-cards">
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                    <div class="c-card">
+                        Dit is de tekst op een kaartje
+                    </div>
+                </div>
+            </div>
+            <div class="c-timer js-timer">XX</div>
+        </div>
+        </div>
+    </body>
+</html>

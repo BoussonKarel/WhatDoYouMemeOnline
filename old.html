@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>What do you meme?</title>
+        <meta name="description" content="Fun party game for friends.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+
+        <script src="./js/dataHander.js"></script>
+        <script src="./js/old.js"></script>
+    </head>
+    <body>
+        <div class="c-app">
+            <div class="c-header">
+                <div class="c-header__name js-username">
+                    -
+                </div>
+                <div class="c-header__score">
+                    <span class="js-score">-</span> punten
+                </div>
+            </div>
+            <div class="c-image js-image-container">
+                <img src="" alt="Image of the round" class="c-image__img" />
+            </div>
+            <div class="c-cards js-cards">
+                <!-- <div class="c-card">
+                    Dit is de tekst op een kaartje
+                </div> -->
+            </div>
+        </div>
+        <div class="c-timer js-timer">XX</div>
+        <div class="c-namepicker js-popup">
+            <form class="c-namepicker__form">
+                <label for="name">Kies een gebruikersnaam</label>
+                <input type="text" name="name" id="name">
+                <button>Spelen</button>
+            </form>
+        </div>
+    </body>
+</html>
