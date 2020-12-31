@@ -1,6 +1,6 @@
-let htmlHostControls, htmlNewImage, htmlCardsHolder, htmlImageContainer, htmlTimer;
-let htmlLoadPlayers, htmlPlayers, htmlStartRound, htmlStartVoting;
-let current_username = null, isJudge = false, isHost = false;
+let htmlScore, htmlStatus, htmlUsername, htmlNewImage, htmlCardsHolder, htmlImageContainer, htmlTimer;
+let htmlHostControls, htmlLoadPlayers, htmlPlayers, htmlStartRound, htmlStartVoting;
+let current_username = null, isJudge = false, isHost = false, score = 0;
 let players, judgeIndex = 0;
 let cardAmount = 7, roundTime = 60;
 let htmlSelectedCard = null;
@@ -29,10 +29,12 @@ const handleMQTTData = function(data) {
             isJudge = false;
             if (data.judge.username == current_username) {
                 isJudge = true;
+                showStatus("You are the judge");
             }
             showImage(data.image);
             if (!isJudge) {
                 showRandomCards(data.cards);
+                showStatus("Pick a card that fits the image.");
             }
             else {
                 htmlCardsHolder.innerHTML = `<div class="c-card"><strong>You are the judge.</strong> Wait for others to play their cards</div>`
@@ -53,6 +55,11 @@ const handleMQTTData = function(data) {
             htmlCardsHolder.innerHTML = "";
             htmlSelectedCard = null;
             htmlCardsHolder.innerHTML = `<div class="c-card">${data.winning_card.card.text}</div><div class="c-card"><strong>Kaartje gespeeld door:</strong> ${data.winning_card.player}</div>`
+            if (data.winning_card.player == current_username) {
+                console.log(data.winning_card.player.username);
+                score++;
+                showScore(score);
+            }
         default:
             break;
     }
@@ -171,6 +178,18 @@ const showPlayers = function(players) {
         playerContent += player.username + ", ";
     }
     htmlPlayers.innerHTML = playerContent;
+}
+
+const showUsername = function(name) {
+    htmlUsername.innerHTML = name;
+}
+
+const showScore = function(points) {
+    htmlScore.innerHTML = points + " punten";
+}
+
+const showStatus = function(status) {
+    htmlStatus.innerHTML = status;
 }
 
 //    ---
@@ -298,7 +317,7 @@ const voteCard = function(htmlCard) {
         htmlSelectedCard.classList.add("c-card--picking");
 
         let card = { "id": htmlCard.dataset.id, "text": htmlCard.innerHTML, "hot": htmlCard.dataset.hot };
-        let playedCard = { "player": current_username, "card": card}
+        let playedCard = { "player": htmlCard.dataset.player, "card": card}
         let playedCardRequest = JSON.stringify(playedCard);
     
         handleData(`${_BASEURI}/votecard`, handleCardVoted, errorVoteCard, 'POST', playedCardRequest)
@@ -345,12 +364,15 @@ function sleep (time) {
 const init = function() {
     console.log("Document loaded");
 
-    htmlHostControls = document.querySelector(".js-host-controls");
+    htmlScore = document.querySelector(".js-score");
+    htmlStatus = document.querySelector(".js-status");
+    htmlUsername = document.querySelector(".js-username");
     htmlNewImage = document.querySelector(".js-btn-new");
     htmlImageContainer = document.querySelector(".js-image-container");
     htmlCardsHolder = document.querySelector(".js-cards");
     htmlTimer = document.querySelector(".js-timer");
 
+    htmlHostControls = document.querySelector(".js-host-controls");
     htmlLoadPlayers = document.querySelector(".js-loadplayers");
     htmlPlayers = document.querySelector(".js-players");
     htmlStartRound = document.querySelector(".js-startround");
@@ -361,6 +383,9 @@ const init = function() {
     const urlParams = new URLSearchParams(queryString);
     host = urlParams.get('host')
     current_username = urlParams.get('name')
+    showUsername(current_username);
+    showScore(score);
+    showStatus("Game hasn't started yet.")
 
     if (!current_username) {
         window.location.href = "./index.html";
