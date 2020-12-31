@@ -27,14 +27,14 @@ const handleMQTTData = function(data) {
         case "roundstart":
             htmlSelectedCard = null;
             isJudge = false;
+            
+            showStatus("Judge: " + data.judge.username);
             if (data.judge.username == current_username) {
                 isJudge = true;
-                showStatus("You are the judge");
             }
             showImage(data.image);
             if (!isJudge) {
                 showRandomCards(data.cards);
-                showStatus("Pick a card that fits the image.");
             }
             else {
                 htmlCardsHolder.innerHTML = `<div class="c-card"><strong>You are the judge.</strong> Wait for others to play their cards</div>`
